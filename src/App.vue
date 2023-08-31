@@ -1,12 +1,14 @@
 <script setup>
 // import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import Merchant from './components/Merchant.vue'
 </script>
 
 <template>
 
     <!-- <div class="wrapper"> -->
-      <HelloWorld/>
+      <Merchant/>
+      <!-- <HelloWorld/> -->
 
       <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
