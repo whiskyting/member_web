@@ -13,6 +13,25 @@
         <el-button @click="dialogFormVisible = true">註冊</el-button>
       </span>
     </el-form>
+    
+    
+
+
+
+    <el-form>
+      <el-switch v-model="value1" class="mb-2" active-text="記住帳號" />
+      <br />
+      <el-switch v-model="value2" class="mb-2" style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
+        active-text="記住密碼"  />
+      <br />
+      <!-- <el-switch v-model="value3" inline-prompt active-text="是" inactive-text="否" />
+      <el-switch v-model="value4" class="ml-2" inline-prompt
+        style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" active-text="Y" inactive-text="N" />
+      <el-switch v-model="value6" class="ml-2" width="60" inline-prompt active-text="超出省略" inactive-text="超出省略" />
+      <el-switch v-model="value5" class="ml-2" inline-prompt
+        style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949" active-text="完整展示多个内容"
+        inactive-text="多个内容" /> -->
+    </el-form>
 
     <el-dialog v-model="dialogFormVisible" title="註冊會員">
       <el-form :model="form">
@@ -58,27 +77,41 @@ const loginForm = reactive({
   account: '',
   password: ''
 })
-const login = () => {}
+const login = () => { }
+
+const value1 = ref(true)
+const value2 = ref(true)
+const value3 = ref(true)
+const value4 = ref(true)
+const value5 = ref(true)
+const value6 = ref(true)
 </script>
 
+
+
 <style scoped>
-.login{
+.login {
   text-align: center;
   top: 50%;
 }
-.loginForm{
+
+.loginForm {
   display: inline-block;
   vertical-align: middle;
 }
+
 .el-button--text {
   margin-right: 15px;
 }
+
 .el-select {
   width: 300px;
 }
+
 .el-input {
   width: 300px;
 }
+
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
