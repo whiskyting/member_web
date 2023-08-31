@@ -23,7 +23,7 @@
                         </el-icon>
                         <span>訂單管理</span>
                     </template>
-                    <el-menu-item-group >
+                    <el-menu-item-group>
                         <el-menu-item index="1-1">代辦訂單</el-menu-item>
                         <el-menu-item index="1-2">取消訂單</el-menu-item>
                         <el-menu-item index="1-3">過去訂單</el-menu-item>
@@ -63,7 +63,7 @@
                         </el-icon>
                         <span>評價中心</span>
                     </template>
-                    <el-menu-item-group >
+                    <el-menu-item-group>
                         <el-menu-item index="1-1">評價管理</el-menu-item>
                         <!-- <el-menu-item index="1-2">item two</el-menu-item> -->
                     </el-menu-item-group>
@@ -94,7 +94,7 @@
                     </el-sub-menu> -->
                 </el-sub-menu>
 
-                <el-menu-item index="7" >
+                <el-menu-item index="7">
                     <el-icon>
                         <document />
                     </el-icon>
@@ -106,30 +106,65 @@
 
 
         </el-col>
+        
     </el-row>
-    <!-- <el-row>
-      <el-col :span="12"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="12"><div class="grid-content ep-bg-purple-light" /></el-col>
+
+    <el-row>
+        <el-col :span="12">
+            <div class="grid-content ep-bg-purple" >
+                
+            </div>
+        </el-col>
+        <el-col :span="12">
+            <div class="grid-content ep-bg-purple-light" />
+            
+        </el-col>
     </el-row>
     <el-row>
-      <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="8"><div class="grid-content ep-bg-purple-light" /></el-col>
-      <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="8">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
+        <el-col :span="8">
+            <div class="grid-content ep-bg-purple-light" />
+        </el-col>
+        <el-col :span="8">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
     </el-row>
     <el-row>
-      <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="6"><div class="grid-content ep-bg-purple-light" /></el-col>
-      <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="6"><div class="grid-content ep-bg-purple-light" /></el-col>
+        <el-col :span="6">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
+        <el-col :span="6">
+            <div class="grid-content ep-bg-purple-light" />
+        </el-col>
+        <el-col :span="6">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
+        <el-col :span="6">
+            <div class="grid-content ep-bg-purple-light" />
+        </el-col>
     </el-row>
     <el-row>
-      <el-col :span="4"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="4"><div class="grid-content ep-bg-purple-light" /></el-col>
-      <el-col :span="4"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="4"><div class="grid-content ep-bg-purple-light" /></el-col>
-      <el-col :span="4"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="4"><div class="grid-content ep-bg-purple-light" /></el-col>
-    </el-row> -->
+        <el-col :span="4">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
+        <el-col :span="4">
+            <div class="grid-content ep-bg-purple-light" />
+        </el-col>
+        <el-col :span="4">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
+        <el-col :span="4">
+            <div class="grid-content ep-bg-purple-light" />
+        </el-col>
+        <el-col :span="4">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
+        <el-col :span="4">
+            <div class="grid-content ep-bg-purple-light" />
+        </el-col>
+    </el-row>
 </template>
 
 <script lang="ts" setup>
@@ -216,6 +251,5 @@ const handleClose = (key: string, keyPath: string[]) => {
 
 .dialog-footer button:first-child {
     margin-right: 10px;
-}
-</style>
+}</style>
   
