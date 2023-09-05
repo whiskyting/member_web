@@ -1,5 +1,6 @@
 <template>
   <div style="min-height: calc(100vh - 120px);background-color: #f8f6e9;width: 20%;">
+    
     <el-row>
       <el-col>
         <el-menu
@@ -15,11 +16,12 @@
               <el-icon>
                 <location />
               </el-icon>
-              <span>商家設定</span>
+              <span>我的帳戶</span>
             </template>
-              <el-menu-item index="1-1">基本資料</el-menu-item>
-              <el-menu-item index="1-2">通知設定</el-menu-item>
-              <el-menu-item index="1-3">時段設定</el-menu-item>
+              <el-menu-item index="1-1">基本設定</el-menu-item>
+              <el-menu-item index="1-2">信用卡</el-menu-item>
+              <el-menu-item index="1-3">修改密碼</el-menu-item>
+              <el-menu-item index="1-4">寵物資訊</el-menu-item>
           </el-sub-menu>
 
           <el-sub-menu index="2">
@@ -27,60 +29,14 @@
               <el-icon>
                 <IconMenu />
               </el-icon>
-              <span>訂單管理</span>
+              <span>訂單紀錄</span>
             </template>
-              <el-menu-item index="2-1">代辦訂單</el-menu-item>
-              <el-menu-item index="2-2">取消訂單</el-menu-item>
-              <el-menu-item index="2-3">過去訂單</el-menu-item>
+              <el-menu-item index="2-1">現有訂單</el-menu-item>
+              <el-menu-item index="2-2">過去訂單</el-menu-item>
           </el-sub-menu>
+        
 
-          <el-sub-menu index="3">
-            <template #title>
-              <el-icon>
-                <document />
-              </el-icon>
-              <span>服務管理</span>
-            </template>
-              <el-menu-item index="3-1">現有服務</el-menu-item>
-              <el-menu-item index="3-2">新增服務</el-menu-item>
-              <el-menu-item index="3-3">其他</el-menu-item>
-          </el-sub-menu>
 
-          <el-sub-menu index="4">
-            <template #title>
-              <el-icon>
-                <setting />
-              </el-icon>
-              <span>數據中心</span>
-            </template>
-              <el-menu-item index="4-1">數據管理</el-menu-item>
-          </el-sub-menu>
-
-          <el-sub-menu index="5">
-            <template #title>
-              <el-icon>
-                <Bell />
-              </el-icon>
-              <span>評價中心</span>
-            </template>
-              <el-menu-item index="5-1">評價管理</el-menu-item>
-          </el-sub-menu>
-
-          <el-sub-menu index="6">
-            <template #title>
-              <el-icon>
-                <setting />
-              </el-icon>
-              <span>帳務管理</span>
-            </template>
-          </el-sub-menu>
-
-          <el-menu-item index="7">
-            <el-icon>
-              <document />
-            </el-icon>
-            <span>通知中心</span>
-          </el-menu-item>
         </el-menu>
       </el-col>
     </el-row>

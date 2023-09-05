@@ -12,6 +12,8 @@ import FootBar from './components/FootBar.vue'
     <FootBar />
     
   </div>
+    
+
 
 </template>
 
