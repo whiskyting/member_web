@@ -8,13 +8,12 @@ import FootBar from './components/FootBar.vue'
 <template>
   <div class="index">
     <HeadBar />
-    <Merchant />
+    <div style="display:flex ;">
+      <Merchant />
+      <router-view></router-view>
+    </div>
     <FootBar />
-    
   </div>
-    
-
-
 </template>
 
 <style scoped>
@@ -22,7 +21,7 @@ import FootBar from './components/FootBar.vue'
   width: 100%;
   height: 100%;
   display: flex;
+  background: #f8f6e9;
   flex-direction: column;
 }
-
 </style>
