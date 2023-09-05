@@ -1,13 +1,31 @@
 <template>
   <div class="header">
+
     <div class="title" >
       4A2B
     </div>
     <div class="titimg">
       <!-- <img src="logoicon.png"> -->
     </div>
+
   </div>
+    
 </template>
+
+<script lang="ts" setup>
+import { reactive, toRefs } from 'vue'
+
+const state = reactive({
+  circleUrl:
+    'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+  squareUrl:
+    'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
+  sizeList: ['small', '', 'large'] as const,
+})
+
+const { circleUrl, squareUrl, sizeList } = toRefs(state)
+</script>
+
 
 <style scoped>
 .header {
@@ -25,16 +43,13 @@
   font-weight:bold;
   
 }
+.avatar{
+  margin-top: 10px;
+  margin-left:1400px;
+}
 
-.titimg{
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0; 
-  width: 10%;
-  height: 100%; /* 高和寬都填滿容器 */
-  object-fit: cover; /* 和background-image設定background-size: cover一樣，圖片剛好填滿 */
-  object-position: center;
+.num-title{
+  margin-top: 15px;
+  margin-left:10px;
 }
 </style>

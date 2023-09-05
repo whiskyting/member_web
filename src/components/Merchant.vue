@@ -119,4 +119,5 @@ const handleClose = (key: string, keyPath: string[]) => {
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
+
 </style>
