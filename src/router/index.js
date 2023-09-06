@@ -10,13 +10,30 @@ const router = createRouter({
       component: HelloWorld
     },
     {
+      path: '/setting',
+      name: 'setting',
+      component: () => import('../views/setting.vue')
+    },
+    {
+      path: '/creditcard',
+      name: 'creditcard',
+      component: () => import('../views/creditcard.vue')
+    },
+    {
       path: '/password',
       name: 'password',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/password.vue')
-    }
+    },
+    {
+      path: '/petinformation',
+      name: 'petinformation',
+      component: () => import('../views/petinformation.vue')
+    },
+    
+    
   ]
 })
 
