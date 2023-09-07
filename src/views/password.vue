@@ -5,13 +5,13 @@
     <div class="background">
       <el-form :model="passwordForm">
         <el-form-item label="密碼" :label-width="formLabelWidth">
-          <el-input v-model="passwordForm.password" label-width="100px" autocomplete="off" />
+          <el-input v-model="passwordForm.password" label-width="100px" autocomplete="off" type="password" placeholder="請輸入舊密碼" show-password/>
         </el-form-item>
         <el-form-item label="新密碼" :label-width="formLabelWidth">
-          <el-input v-model="passwordForm.newPassword" autocomplete="off" />
+          <el-input v-model="passwordForm.newPassword" autocomplete="off" type="password" placeholder="請輸入新密碼" show-password/>
         </el-form-item>
-        <el-form-item label="再次確認" :label-width="formLabelWidth">
-          <el-input v-model="passwordForm.againPassword" autocomplete="off" />
+        <el-form-item label="再次確認" :label-width="formLabelWidth" >
+          <el-input v-model="passwordForm.againPassword" autocomplete="off" type="password" placeholder="再次確認新密碼" show-password/>
         </el-form-item>
         <span>
           <el-button class="button" @click="confirm()">確認</el-button>
