@@ -1,25 +1,16 @@
 <template>
-  <div style="margin-bottom: 20px">
-    <el-button size="small" @click="addTab(editableTabsValue)">
-      新增寵物
-    </el-button>
+  <div class="petinformation">
+    <div style="margin-bottom: 20px">
+      <el-button size="small" @click="addTab(editableTabsValue)">
+        新增寵物
+      </el-button>
+    </div>
+    <el-tabs v-model="editableTabsValue" type="card" class="demo-tabs" closable @tab-remove="removeTab">
+      <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+        {{ item.content }}
+      </el-tab-pane>
+    </el-tabs>
   </div>
-  <el-tabs
-    v-model="editableTabsValue"
-    type="card"
-    class="demo-tabs"
-    closable
-    @tab-remove="removeTab"
-  >
-    <el-tab-pane
-      v-for="item in editableTabs"
-      :key="item.name"
-      :label="item.title"
-      :name="item.name"
-    >
-      {{ item.content }}
-    </el-tab-pane>
-  </el-tabs>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -28,12 +19,12 @@ let tabIndex = 2
 const editableTabsValue = ref('2')
 const editableTabs = ref([
   {
-    title: 'Tab 1',
+    title: '寵物 1',
     name: '1',
     content: 'Tab 1 content',
   },
   {
-    title: 'Tab 2',
+    title: '寵物 2',
     name: '2',
     content: 'Tab 2 content',
   },
@@ -66,12 +57,18 @@ const removeTab = (targetName: string) => {
   editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
 }
 </script>
-<style>
-.demo-tabs > .el-tabs__content {
+<style lang="scss">
+.petinformation {
+    margin: 10px;
+    height: 80vh;
+    width: 50%;
+}
+
+.demo-tabs>.el-tabs__content {
   padding: 32px;
   color: #6b778c;
   font-size: 32px;
   font-weight: 600;
-  
+
 }
 </style>
