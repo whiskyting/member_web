@@ -18,7 +18,7 @@
               </el-icon>
               <span>我的帳戶</span>
             </template>
-              <el-menu-item index="1-1"><router-link to="/setting">基本設定</router-link></el-menu-item>
+              <el-menu-item index="1-1"><router-link to="/settingPage">基本設定</router-link></el-menu-item>
               <el-menu-item index="1-2"><router-link to="/creditcard">信用卡</router-link></el-menu-item>
               <el-menu-item index="1-3"><router-link to="/password">修改密碼</router-link></el-menu-item>
               <el-menu-item index="1-4"><router-link to="/petinformation">寵物資訊</router-link></el-menu-item>

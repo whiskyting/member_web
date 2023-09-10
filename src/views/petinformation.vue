@@ -1,16 +1,67 @@
 <template>
-  <div class="petinformation">
-    <div style="margin-bottom: 20px">
-      <el-button size="small" @click="addTab(editableTabsValue)">
-        新增寵物
-      </el-button>
+  <el-scrollbar class="pet">
+    <div class="petinformation">
+      <div style="margin-bottom: 20px">
+        <el-button size="small" @click="addTab(editableTabsValue)"> 新增寵物 </el-button>
+      </div>
+      <el-tabs
+        v-model="editableTabsValue"
+        type="card"
+        class="demo-tabs"
+        closable
+        @tab-remove="removeTab"
+      >
+        <el-tab-pane
+          v-for="item in editableTabs"
+          :key="item.name"
+          :label="item.title"
+          :name="item.name"
+        >
+          <el-form>
+            <el-form-item>
+              <el-upload
+                class="avatar-uploader"
+                action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :before-upload="beforeAvatarUpload"
+              >
+                <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+              </el-upload>
+              上傳頭像
+            </el-form-item>
+            <el-form-item label="姓名">
+              <el-input size="small"></el-input>
+            </el-form-item>
+            <el-form-item label="個性">
+              <el-select class="m-1" placeholder="Select">
+                <el-option
+                  v-for="item in personality"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="種類">
+              <el-select class="m-2" placeholder="Select">
+                <el-option
+                  v-for="item in Species"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="類別"></el-form-item>
+            <el-form-item label="年紀"></el-form-item>
+            <el-form-item label="品種"></el-form-item>
+          </el-form>
+        </el-tab-pane>
+      </el-tabs>
     </div>
-    <el-tabs v-model="editableTabsValue" type="card" class="demo-tabs" closable @tab-remove="removeTab">
-      <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
-        {{ item.content }}
-      </el-tab-pane>
-    </el-tabs>
-  </div>
+  </el-scrollbar>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -21,13 +72,13 @@ const editableTabs = ref([
   {
     title: '寵物 1',
     name: '1',
-    content: 'Tab 1 content',
+    content: 'Tab 1 content'
   },
   {
     title: '寵物 2',
     name: '2',
-    content: 'Tab 2 content',
-  },
+    content: 'Tab 2 content'
+  }
 ])
 
 const addTab = (targetName: string) => {
@@ -35,7 +86,7 @@ const addTab = (targetName: string) => {
   editableTabs.value.push({
     title: 'New Tab',
     name: newTabName,
-    content: 'New Tab content',
+    content: 'New Tab content'
   })
   editableTabsValue.value = newTabName
 }
@@ -56,19 +107,103 @@ const removeTab = (targetName: string) => {
   editableTabsValue.value = activeName
   editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
 }
-</script>
-<style lang="scss">
-.petinformation {
-    margin: 10px;
-    height: 80vh;
-    width: 50%;
+
+import type { UploadProps } from 'element-plus'
+import { ElMessage } from 'element-plus'
+const imageUrl = ref('')
+
+const handleAvatarSuccess: UploadProps['onSuccess'] = (response, uploadFile) => {
+  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
 }
 
-.demo-tabs>.el-tabs__content {
+const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  if (rawFile.type !== 'image/jpeg') {
+    ElMessage.error('Avatar picture must be JPG format!')
+    return false
+  } else if (rawFile.size / 1024 / 1024 > 2) {
+    ElMessage.error('Avatar picture size can not exceed 2MB!')
+    return false
+  }
+  return true
+}
+
+const personality = [
+  {
+    value: 'Option1',
+    label: 'Option1'
+  },
+  {
+    value: 'Option2',
+    label: 'Option2'
+  },
+  {
+    value: 'Option3',
+    label: 'Option3'
+  },
+  {
+    value: 'Option4',
+    label: 'Option4'
+  },
+  {
+    value: 'Option5',
+    label: 'Option5'
+  }
+]
+const Species = [
+  {
+    value: 'cat',
+    label: 'cat'
+  },
+  {
+    value: 'dog',
+    label: 'dog'
+  },
+  
+]
+</script>
+
+<style lang="scss">
+.petinformation {
+  margin: 10px;
+  height: 80vh;
+  width: 50%;
+}
+
+.demo-tabs > .el-tabs__content {
   padding: 32px;
   color: #6b778c;
   font-size: 32px;
   font-weight: 600;
+}
+.avatar-uploader .avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+.pet{
+  width: 50%;
+}
+</style>
 
+<style>
+.avatar-uploader .el-upload {
+  border: 1px dashed var(--el-border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover {
+  border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  text-align: center;
 }
 </style>

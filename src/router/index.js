@@ -10,9 +10,9 @@ const router = createRouter({
       component: HelloWorld
     },
     {
-      path: '/setting',
-      name: 'setting',
-      component: () => import('../views/setting.vue')
+      path: '/settingPage',
+      name: 'settingPage',
+      component: () => import('../views/settingPage.vue')
     },
     {
       path: '/creditcard',
