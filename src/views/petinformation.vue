@@ -34,6 +34,18 @@
             <el-form-item label="姓名">
               <el-input size="small"></el-input>
             </el-form-item>
+            <el-form-item label="類別">
+              <el-select class="m-2" placeholder="Select">
+                <el-option
+                  v-for="item in Species"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+            </el-select>
+            </el-form-item>
+            <el-form-item label="品種"><el-input size="small"></el-input></el-form-item>
+            
             <el-form-item label="個性">
               <el-select class="m-1" placeholder="Select">
                 <el-option
@@ -44,19 +56,9 @@
                 />
               </el-select>
             </el-form-item>
-            <el-form-item label="種類">
-              <el-select class="m-2" placeholder="Select">
-                <el-option
-                  v-for="item in Species"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-              </el-select>
-            </el-form-item>
-            <el-form-item label="類別"></el-form-item>
-            <el-form-item label="年紀"></el-form-item>
-            <el-form-item label="品種"></el-form-item>
+            <el-form-item label="年紀"><el-input size="small"></el-input></el-form-item>
+            <el-form-item label="晶片號碼"><el-input size="small"></el-input></el-form-item>
+            
           </el-form>
         </el-tab-pane>
       </el-tabs>
