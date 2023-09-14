@@ -47,10 +47,10 @@
   </el-scrollbar>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref,watch } from 'vue'
 
 let tabIndex = 2
-const editableTabsValue = ref('2')
+const editableTabsValue = ref('1')
 const editableTabs = ref([
   {
     title: '寵物 1',
@@ -104,6 +104,18 @@ const removeTab = (targetName: string) => {
   editableTabsValue.value = activeName
   editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
 }
+
+watch(editableTabsValue, async (newQuestion, oldQuestion) => {
+  if(newQuestion != oldQuestion){
+    petform.value.petName= '';
+    petform.value.variety= '';
+    petform.value.petId= '';
+    petform.value.petAge= '';
+    petform.value.personAlity='';
+    petform.value.petClass='';
+    imageUrl.value = '';
+  }
+})
 
 import type { UploadProps } from 'element-plus'
 import { ElMessage } from 'element-plus'
