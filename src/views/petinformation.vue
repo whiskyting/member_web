@@ -4,65 +4,46 @@
       <div style="margin-bottom: 20px">
         <el-button size="small" @click="addTab(editableTabsValue)"> 新增寵物 </el-button>
       </div>
-      <el-tabs
-        v-model="editableTabsValue"
-        type="card"
-        class="demo-tabs"
-        closable
-        @tab-remove="removeTab"
-      >
-        <el-tab-pane
-          v-for="item in editableTabs"
-          :key="item.name"
-          :label="item.title"
-          :name="item.name"
-        >
+      <el-tabs v-model="editableTabsValue" type="card" class="demo-tabs" closable @tab-remove="removeTab">
+        <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
           <el-form>
             <el-form-item>
-              <el-upload
-                class="avatar-uploader"
-                action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-                :show-file-list="false"
-                :on-success="handleAvatarSuccess"
-                :before-upload="beforeAvatarUpload"
-              >
+              <el-upload class="avatar-uploader" action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
                 <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+                <el-icon v-else class="avatar-uploader-icon">
+                  <Plus />
+                </el-icon>
               </el-upload>
               上傳頭像
             </el-form-item>
             <el-form-item label="姓名">
-              <el-input size="small"></el-input>
+              <el-input size="small" v-model="petform.petName"></el-input>
             </el-form-item>
-            <el-form-item label="類別">
-              <el-select class="m-2" placeholder="Select">
-                <el-option
-                  v-for="item in Species"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-            </el-select>
-            </el-form-item>
-            <el-form-item label="品種"><el-input size="small"></el-input></el-form-item>
-            
-            <el-form-item label="個性">
-              <el-select class="m-1" placeholder="Select">
-                <el-option
-                  v-for="item in personality"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
+            <el-form-item label="類別" >
+              <el-select class="m-2" placeholder="Select" v-model="petform.petClass">
+                <el-option v-for="item in Species" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </el-form-item>
-            <el-form-item label="年紀"><el-input size="small"></el-input></el-form-item>
-            <el-form-item label="晶片號碼"><el-input size="small"></el-input></el-form-item>
-            
+            <el-form-item label="品種"><el-input size="small" v-model="petform.variety"></el-input></el-form-item>
+
+            <el-form-item label="個性">
+              <el-select class="m-1" placeholder="Select" v-model="petform.personAlity">
+                <el-option  v-for="item in personality" :key="item.value" :label="item.label" :value="item.value"  />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="年紀"><el-input size="small" v-model="petform.petAge"></el-input></el-form-item>
+            <el-form-item label="晶片號碼"><el-input size="small" v-model="petform.petId"></el-input></el-form-item>
+
           </el-form>
         </el-tab-pane>
       </el-tabs>
+      <span>
+      <el-button class="button" @click="confirm()">確認</el-button>
+      <el-button class="button">取消</el-button>
+    </span>
     </div>
+    
   </el-scrollbar>
 </template>
 <script lang="ts" setup>
@@ -82,6 +63,20 @@ const editableTabs = ref([
     content: 'Tab 2 content'
   }
 ])
+
+const petform = ref({
+  petName: '',
+  variety: '',
+  petId: '',
+  petAge: '',
+  personAlity:'',
+  petClass:'',
+})
+
+const confirm = () => {
+  console.log("petform", petform)
+}
+
 
 const addTab = (targetName: string) => {
   const newTabName = `${++tabIndex}`
@@ -131,24 +126,24 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
 
 const personality = [
   {
-    value: 'Option1',
-    label: 'Option1'
+    value: '熱情',
+    label: '熱情'
   },
   {
-    value: 'Option2',
-    label: 'Option2'
+    value: '暴躁',
+    label: '暴躁'
   },
   {
-    value: 'Option3',
-    label: 'Option3'
+    value: '溫順',
+    label: '溫順'
   },
   {
-    value: 'Option4',
-    label: 'Option4'
+    value: '內向',
+    label: '內向'
   },
   {
-    value: 'Option5',
-    label: 'Option5'
+    value: '敏感',
+    label: '敏感'
   }
 ]
 const Species = [
@@ -160,7 +155,7 @@ const Species = [
     value: 'dog',
     label: 'dog'
   },
-  
+
 ]
 </script>
 
@@ -171,18 +166,20 @@ const Species = [
   width: 50%;
 }
 
-.demo-tabs > .el-tabs__content {
+.demo-tabs>.el-tabs__content {
   padding: 32px;
   color: #6b778c;
   font-size: 32px;
   font-weight: 600;
 }
+
 .avatar-uploader .avatar {
   width: 178px;
   height: 178px;
   display: block;
 }
-.pet{
+
+.pet {
   width: 50%;
 }
 </style>
