@@ -20,6 +20,11 @@
             <el-form-item label="姓名">
               <el-input size="small" v-model="petform.petName"></el-input>
             </el-form-item>
+            <el-form-item label="性別" >
+              <el-select class="m-3" placeholder="Select" v-model="petform.petGender"  >
+                <el-option v-for="item in gender" :key="item.value" :label="item.label" :value="item.value" />
+              </el-select>
+            </el-form-item>
             <el-form-item label="類別" >
               <el-select class="m-2" placeholder="Select" v-model="petform.petClass">
                 <el-option v-for="item in Species" :key="item.value" :label="item.label" :value="item.value" />
@@ -71,6 +76,7 @@ const petform = ref({
   petAge: '',
   personAlity:'',
   petClass:'',
+  petGender:''
 })
 
 const confirm = () => {
@@ -136,6 +142,17 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
   return true
 }
 
+const gender = [
+  {
+    value: '男生',
+    label: '男生'
+  },
+  {
+    value: '女生',
+    label: '女生'
+  }
+]
+
 const personality = [
   {
     value: '熱情',
@@ -160,12 +177,12 @@ const personality = [
 ]
 const Species = [
   {
-    value: 'cat',
-    label: 'cat'
+    value: '貓',
+    label: '貓'
   },
   {
-    value: 'dog',
-    label: 'dog'
+    value: '狗',
+    label: '狗'
   },
 
 ]
@@ -192,8 +209,13 @@ const Species = [
 }
 
 .pet {
-  width: 50%;
+  width: 100%;
 }
+
+.el-input{
+  width: 300px;
+}
+
 </style>
 
 <style>

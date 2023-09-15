@@ -1,5 +1,5 @@
 <template>
-    <el-scrollbar class="setting" height="400px">
+    <el-scrollbar class="setting" height="500px">
         <div class="">
             <el-text style="font-size: large; color: #888888; font-weight: bold">基本設定</el-text>
 

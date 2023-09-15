@@ -3,16 +3,20 @@
 import HeadBar from './components/HeadBar.vue'
 import Merchant from './components/Merchant.vue'
 import FootBar from './components/FootBar.vue'
+import Login from './views/Login.vue'
 </script>
 
 <template>
-  <div class="index">
+  <!-- <div class="index">
     <HeadBar />
     <div style="display:flex ;">
       <Merchant />
       <router-view></router-view>
     </div>
     <FootBar />
+  </div> -->
+  <div class="index">
+    <Login />
   </div>
 </template>
 

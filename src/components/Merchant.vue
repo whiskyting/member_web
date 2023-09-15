@@ -31,8 +31,8 @@
               </el-icon>
               <span>訂單紀錄</span>
             </template>
-              <el-menu-item index="2-1">現有訂單</el-menu-item>
-              <el-menu-item index="2-2">過去訂單</el-menu-item>
+              <el-menu-item index="2-1"><router-link to="/order">現有訂單</router-link></el-menu-item>
+              <el-menu-item index="2-2"><router-link to="/orderhistory">過去訂單</router-link></el-menu-item>
           </el-sub-menu>
         
 

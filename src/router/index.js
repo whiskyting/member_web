@@ -33,7 +33,17 @@ const router = createRouter({
       component: () => import('../views/petinformation.vue')
     },
     
-    
+    {
+      path: '/order',
+      name: 'order',
+      component: () => import('../views/order.vue')
+    },
+    {
+      path: '/orderhistory',
+      name: 'orderhistory',
+      component: () => import('../views/orderhistory.vue')
+    }
+ 
   ]
 })
 
