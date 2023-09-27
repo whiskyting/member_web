@@ -1,3 +1,4 @@
+
 <template>
   <div class="login">
     <div class="title"><img src="../components/config/image/Login_IMG.png"></div>
@@ -15,6 +16,22 @@
       <el-button @click="dialogFormVisible = true" style="width: 200px; height: 50px;">註冊</el-button>
       <el-link @click="verifyEmail = true" style="color: red; margin-left: 20px;">忘記密碼</el-link>
     </div>
+    
+    <div style="margin-top: 50px;">
+
+      <vue-recaptcha
+        :sitekey="instance_vueRecaptchaV2.data_v2SiteKey"
+        size="normal"
+        theme="light"
+        hl="zh-TW"
+        @verify="instance_vueRecaptchaV2.recaptchaVerified"
+        @expire="instance_vueRecaptchaV2.recaptchaExpired"
+        @fail="instance_vueRecaptchaV2.recaptchaFailed"
+      />
+
+
+    </div>
+
     <div style="margin-top: 50px; ">
       <img src="../components/config/image/googleLogin.png">
     </div>
@@ -95,6 +112,26 @@
 <script lang="ts" setup>
 import { dataType } from 'element-plus/es/components/table-v2/src/common';
 import { reactive, ref } from 'vue'
+import vueRecaptcha from 'vue3-recaptcha2';
+const instance_vueRecaptchaV2 = reactive({
+  // 請換成你註冊的 SiteKey
+  // Please change to your SiteKey.
+  data_v2SiteKey: '6LdtzjMoAAAAAJ6BLwxH2jmakRG9qD6piEdSXhic',
+  recaptchaVerified: (response_token: string) => {
+    console.log(response_token);
+    // 連接後端API，給後端進行認證
+    // Connect to your Backend service.
+  },
+  recaptchaExpired: () => {
+    // 驗證過期後進行的動作
+    // After recaptcha is expired, the action you can do.
+    console.log('驗證過期啦QAQ');
+  },
+  recaptchaFailed: () => {
+    // 驗證失敗進行的動作
+    // After recaptcha is failed, the action you can do.
+  },
+});
 
 const dialogFormVisible = ref(false)
 const verifyEmail = ref(false)
